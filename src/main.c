@@ -89,8 +89,6 @@ void uart_dma_process_task(void *arg)
                             {
                                 int chunk_size = (len - i > 64) ? 64 : (len - i);
 
-                                // Your high-speed data processing here
-                                // Example: checksum calculation, packet parsing, etc.
                                 uint32_t checksum = 0;
                                 for (int j = i; j < i + chunk_size; j++)
                                 {
@@ -193,11 +191,10 @@ void uart_high_speed_reader_task(void *arg)
                 }
             }
 
-            // Optional: Forward processed data to another UART
             // uart_write_bytes(UART_NUM_2, data, len);
         }
 
-        // Minimal delay to prevent watchdog issues
+        // minimal delay to prevent watchdog issues
         vTaskDelay(pdMS_TO_TICKS(1));
     }
 
