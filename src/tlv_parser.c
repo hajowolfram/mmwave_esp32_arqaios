@@ -1,6 +1,8 @@
 #include <string.h>
 #include "tlv_parser.h"
 
+const uint8_t MAGIC_WORD[8] = {0x02, 0x01, 0x04, 0x03, 0x06, 0x05, 0x08, 0x07};
+
 uint32_t parse_uint32_le(const uint8_t *data)
 {
     return ((uint32_t)data[0]) | ((uint32_t)data[1] << 8) |

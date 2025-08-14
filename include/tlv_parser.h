@@ -1,11 +1,13 @@
+#ifndef TLV_PARSER_H
+#define TLV_PARSER_H
 #include <stdint.h>
 
 #define MAX_POINTS 100
 #define MAX_OBJECTS 100
 #define BAUDRATE 921600
-#define UART_BUFFER_SIZE 32000
+#define UART_BUFFER_SIZE 1024
 
-const uint8_t MAGIC_WORD[8] = {0x02, 0x01, 0x04, 0x03, 0x06, 0x05, 0x08, 0x07};
+extern const uint8_t MAGIC_WORD[8];
 
 typedef enum
 {
@@ -103,3 +105,4 @@ void parse_header(const uint8_t *buffer, mmwHeader *header);
 void parse_tlv(const uint8_t *buffer, int numTLVs, int offset, int total_len, radarFrame *frame);
 
 int find_magic_word(const uint8_t *buffer, int length);
+#endif
